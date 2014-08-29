@@ -166,7 +166,7 @@
 	                    <option value="WY">Wyoming</option>
                     </select><br />
                     <!--Zip Code Input box-->
-                    <input type='text' size='15' name='event_city' value='<?php 
+                    <input type='text' size='15' name='event_zip' value='<?php 
                     if (isset($_GET['event_zip'])) { echo $_GET['event_zip']; } ?>' />
                     </td>
                 </tr>
@@ -183,8 +183,8 @@
                   <td><label>
                   	<input type="checkbox" name="include_RSVP" /> Include RSVP
                   </label></td>
-                  <td class="align-left">RSVP deadline date: 
-                  <input type='text' size='15' name='RSVP_deadline' value='<?php 
+                  <td class="align-left">RSVP deadline: 
+                  <input type='datetime-local' size='15' name='RSVP_deadline' value='<?php 
                     if (isset($_GET['RSVP_deadline'])) { echo $_GET['RSVP_deadline']; } ?>' />
                   </td></td>
                 </tr>
