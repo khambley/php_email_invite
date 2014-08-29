@@ -1,10 +1,9 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Untitled Document</title>
-</head>
+<?php
+/**********
+File: invite.php
+Description: Code behind for php-email-invite form
+Developer: Katherine L. Hambley
+Date: August 24, 2014
 
-<body>
-</body>
-</html>
+*/
+?>

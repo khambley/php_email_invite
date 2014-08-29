@@ -4,7 +4,7 @@ at the #party_name# party to be held on #date_time# and at
 
 the following location, #address#. The attire is #attire#.
 
-Please R.S.V.P by #deadline# by checking the box below: #rsvp_reply#.
+Please R.S.V.P by #deadline# by sending a message to #sender_email#.
 
 We look forward to hosting this event! 
 

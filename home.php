@@ -45,6 +45,21 @@
     .align-left {
         text-align: left;
         }
+	  .align-center {
+			text-align: center;
+			}
+		.btn-lg {
+			padding: 10px 16px;
+			width: 90%;
+			font-size: 18px;
+			line-height: 1.3;
+			border: 1px solid #ACAAAA;
+			border-radius: 6px;
+			box-shadow: 2px 2px 2px #494848;
+			}
+		.btn-lg:hover {
+			background-color: #EFEDED;
+			}
 </style>
 </head>
 <body>
@@ -93,12 +108,12 @@
                     <td><input type='text' size='30' name='street_address' value='<?php 
                     if (isset($_GET['street_address'])) { echo $_GET['street_address']; } ?>' />
                     </td>
-                    <td class="align-right">Event City, State, Zip</td>
+                    <td class="align-right">Event City:<br />State:<br />Zip:</td>
                     <td><input type='text' size='15' name='event_city' value='<?php 
-                    if (isset($_GET['event_city'])) { echo $_GET['event_city']; } ?>' />
-                    <select>
-                        <option value="">Select State...</option>
-                        <option value="AL">Alabama</option>
+                    if (isset($_GET['event_city'])) { echo $_GET['event_city']; } ?>' /><br />
+                     <select name="event_state">
+                      <option value="">Select State...</option>
+                      <option value="AL">Alabama</option>
 	                    <option value="AK">Alaska</option>
 	                    <option value="AZ">Arizona</option>
 	                    <option value="AR">Arkansas</option>
@@ -149,12 +164,59 @@
 	                    <option value="WV">West Virginia</option>
 	                    <option value="WI">Wisconsin</option>
 	                    <option value="WY">Wyoming</option>
-                    </select>
+                    </select><br />
+                    <!--Zip Code Input box-->
+                    <input type='text' size='15' name='event_city' value='<?php 
+                    if (isset($_GET['event_zip'])) { echo $_GET['event_zip']; } ?>' />
                     </td>
                 </tr>
+                <tr>
+                	<td class="align-center"> </td>
+                	<td class="align-right">Event Attire:</td>
+                  <td><select name="attire">
+                  	<option value="">Select attire...</option>
+                    <option value="Formal">Formal</option>
+                    <option value="Casual">Casual</option>
+                    <option value="Optional">Optional</option>
+                  </select>
+              		</td>
+                  <td><label>
+                  	<input type="checkbox" name="include_RSVP" /> Include RSVP
+                  </label></td>
+                  <td class="align-left">RSVP deadline date: 
+                  <input type='text' size='15' name='RSVP_deadline' value='<?php 
+                    if (isset($_GET['RSVP_deadline'])) { echo $_GET['RSVP_deadline']; } ?>' />
+                  </td></td>
+                </tr>
+                <tr>
+                    <th> </th>
+                    <th class="align-left" colspan="2">Recipient's Information: </th>
+                    <th colspan="2"></th>
+                </tr>
+                <?php for($i = 1; $i <= 10; $i++) { ?>
+                  <tr>
+                    <td align='right'><?php echo $i ?>. </td>
+                    <td align='right'>Recipient Name: </td>
+                    <td align='left'><input type='text' size='25' name='recipient_name<?php echo $i ?>' value='<?php 
+                    if (isset($_GET['recipient_name'.$i])) { echo $_GET['recipient_name'.$i]; } ?>
+                    ' /></td>
+                    <td align='right'>Recipient Email: </td>
+                    <td align='left'><input type='text' size='25' name='recipient_email<?php echo $i ?>' value='<?php
+                    if (isset($_GET['recipient_email'.$i])) { echo $_GET['recipient_email'.$i]; } ?>
+                    '/></td>
+                  </tr>
+                <?php }; ?>
+                  <tr></tr>
+                  <tr>
+                    <td colspan='5' align='center' width="100%"><input type='submit' class="btn-lg" value='SUBMIT' /></td>
+                  </tr>
             </tbody>
         </table>
         </form>
+        <div class="footer align-center">
+        	© 2014 Katherine L. Hambley - www.superdesigngirl.com Last Updated: 
+        	  <!-- #BeginDate format:Am1 -->August 29, 2014<!-- #EndDate -->
+        </div>
     </div>
 </body>
 </html>
