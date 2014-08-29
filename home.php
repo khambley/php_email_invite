@@ -195,13 +195,13 @@
                 </tr>
                 <?php for($i = 1; $i <= 10; $i++) { ?>
                   <tr>
-                    <td align='right'><?php echo $i ?>. </td>
-                    <td align='right'>Recipient Name: </td>
-                    <td align='left'><input type='text' size='25' name='recipient_name<?php echo $i ?>' value='<?php 
+                    <td><?php echo $i ?>. </td>
+                    <td class="align-right">Recipient Name: </td>
+                    <td><input type='text' size='25' name='recipient_name<?php echo $i ?>' value='<?php 
                     if (isset($_GET['recipient_name'.$i])) { echo $_GET['recipient_name'.$i]; } ?>
                     ' /></td>
-                    <td align='right'>Recipient Email: </td>
-                    <td align='left'><input type='text' size='25' name='recipient_email<?php echo $i ?>' value='<?php
+                    <td class="align-right">Recipient Email: </td>
+                    <td><input type='text' size='25' name='recipient_email<?php echo $i ?>' value='<?php
                     if (isset($_GET['recipient_email'.$i])) { echo $_GET['recipient_email'.$i]; } ?>
                     '/></td>
                   </tr>

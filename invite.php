@@ -72,8 +72,6 @@ function mail_message($data_array, $template_file) {
 
 mail_message($_GET, "email_template.txt");
 
-echo "<h3>Thank you! Your invitation is on it's way!</h3>";
-echo "Your invitation looks like this: <br />";
 ?>
 <div class="container">
 	<h2>Thank you! Your invitation is on it's way!</h2><br />
