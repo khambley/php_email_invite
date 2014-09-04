@@ -196,7 +196,7 @@
                 <?php for($i = 1; $i <= 10; $i++) { ?>
                   <tr>
                     <td><?php echo $i ?>. </td>
-                    <td class="align-right">Recipient Name: </td>
+                    <td class="align-left">Recipient Name: </td>
                     <td><input type='text' size='25' name='recipient_name<?php echo $i ?>' value='<?php 
                     if (isset($_GET['recipient_name'.$i])) { echo $_GET['recipient_name'.$i]; } ?>
                     ' /></td>
@@ -215,7 +215,7 @@
         </form>
         <div class="footer align-center">
         	© 2014 Katherine L. Hambley - www.superdesigngirl.com Last Updated: 
-        	  <!-- #BeginDate format:Am1 -->August 29, 2014<!-- #EndDate -->
+        	  <!-- #BeginDate format:Am1 -->September 4, 2014<!-- #EndDate -->
         </div>
     </div>
 </body>

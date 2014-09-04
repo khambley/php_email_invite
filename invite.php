@@ -59,7 +59,14 @@ function mail_message($data_array, $template_file) {
 		$email_message = str_replace("#sender_name#", $data_array['sender_name'], $email_message);
 		
 		#construct the email headers
+		
 		$to = $data_array['recipient_email'.$i];
+		
+		/*if (preg_match("/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/", $to)) {
+			echo "valid email address";
+		} else {
+			echo "not a valid email address";
+		}*/
 		$from = $data_array['sender_email'];
 		$email_subject = "You've been invited to an event!";
 		
@@ -75,6 +82,15 @@ mail_message($_GET, "email_template.txt");
 ?>
 <div class="container">
 	<h2>Thank you! Your invitation is on it's way!</h2><br />
+  <h3>Here is a listing of the valid email addresses you sent: </h3>
+  <?php 
+	for ($i = 1; $i <= 10; $i++) {
+		$email = $_GET['recipient_email'.$i];
+		if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
+			echo "<p style='color:green;'>".$email."<br />";
+			}
+	}
+	?><br />
   <h3>Your invitation looks like this: </h3>
   <div class="invite-container">
   <p>Hello <?php if (isset($_GET['recipient_name1'])) { echo $_GET['recipient_name1']; } ?>! You are invited to be our guest<br />
