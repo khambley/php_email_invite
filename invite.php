@@ -34,7 +34,7 @@
 File: invite.php
 Description: Code behind for php-email-invite form
 Developer: Katherine L. Hambley
-Date: August 24, 2014
+Date created: August 24, 2014
 ***********/
 
 function mail_message($data_array, $template_file) {
