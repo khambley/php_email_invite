@@ -41,37 +41,36 @@ function mail_message($data_array, $template_file) {
 	
 	#get template contents, and replace variables with data
 	for ($i = 1; $i <= 10; $i++) {
-		
-		$email_message = file_get_contents($template_file);
-		$email_message = str_replace("#recipient_name#", $data_array['recipient_name'.$i], $email_message);
-		$email_message = str_replace("#party_name#", $data_array['party_name'], $email_message);
-		$email_message = str_replace("#date_time#", $data_array['date_time'], $email_message);
-		$email_message = str_replace("#address#", $data_array['street_address']." ".$data_array['event_city'].", ".$data_array['event_state']." ".$data_array['event_zip'], $email_message);
-		$email_message = str_replace("#attire#", $data_array['attire'], $email_message);
-		
-		if (isset($data_array['include_RSVP'])) {
-			$email_message = str_replace("#deadline#", $data_array['RSVP_deadline'], $email_message);
-	  } else {
-			$email_message = str_replace("#deadline#", "Not Applicable", $email_message);	
-		}
-		
-		$email_message = str_replace("#sender_email#", $data_array['sender_email'], $email_message);
-		$email_message = str_replace("#sender_name#", $data_array['sender_name'], $email_message);
-		
-		#construct the email headers
-		
-		$to = $data_array['recipient_email'.$i];
-		
-		/*if (preg_match("/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/", $to)) {
-			echo "valid email address";
+		if(filter_var($data_array['recipient_email'.$i], FILTER_VALIDATE_EMAIL)) {
+			echo "<p style='color:green;'>".$email."<br />";
+			$email_message = file_get_contents($template_file);
+			$email_message = str_replace("#recipient_name#", $data_array['recipient_name'.$i], $email_message);
+			$email_message = str_replace("#party_name#", $data_array['party_name'], $email_message);
+			$email_message = str_replace("#date_time#", $data_array['date_time'], $email_message);
+			$email_message = str_replace("#address#", $data_array['street_address']." ".$data_array['event_city'].", ".$data_array['event_state']." ".$data_array['event_zip'], $email_message);
+			$email_message = str_replace("#attire#", $data_array['attire'], $email_message);
+			
+				if (isset($data_array['include_RSVP'])) {
+					$email_message = str_replace("#deadline#", $data_array['RSVP_deadline'], $email_message);
+				} else {
+					$email_message = str_replace("#deadline#", "Not Applicable", $email_message);	
+				}
+			
+			$email_message = str_replace("#sender_email#", $data_array['sender_email'], $email_message);
+			$email_message = str_replace("#sender_name#", $data_array['sender_name'], $email_message);
+			
+			#construct the email headers
+			
+			$to = $data_array['recipient_email'.$i];
+			
+			$from = $data_array['sender_email'];
+			$email_subject = "You've been invited to an event!";
+			
+			#email the invitation
+			mail($to, $email_subject, $email_message, "From: ". $from);
 		} else {
-			echo "not a valid email address";
-		}*/
-		$from = $data_array['sender_email'];
-		$email_subject = "You've been invited to an event!";
-		
-		#email the invitation
-		mail($to, $email_subject, $email_message, "From: ". $from);
+			echo "<p style='color:red;'>".$data_array['recipient_email'.$i]." is not a valid email address.<br />s";
+		}
 	}
 }
 
